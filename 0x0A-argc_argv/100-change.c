@@ -5,68 +5,53 @@
 #include <stdbool.h>
 
 /**
- * coinConverter - Helper function that does all the mathematics
- * @i: Passed in variable from main for calculations
- * Return: The number of coins needed minimum for the passed in variable
+ * coinConverter - Helper function that calculates the minimum number of coins
+ * @amount: The amount for which we want to find the minimum coins
+ * Return: The number of coins needed for the given amount
  */
-int coinConverter(int i)
+int coinConverter(int amount)
 {
-	int count = 0;
+    int coins[] = {25, 10, 5, 2, 1};
+    int coin_count = 0;
 
-	while (i != 0)
-	{
-		if (i % 10 == 9 || i % 10 == 7)
-			i -= 2;
-		else if (i % 25 == 0)
-			i -= 25;
-		else if (i % 10 == 0)
-			i -= 10;
-		else if (i % 5 == 0)
-			i -= 5;
-		else if (i % 2 == 0)
-		{
-			if (i % 10 == 6)
-				i -= 1;
-			else
-				i -= 2;
-		}
-		else
-			i -= 1;
+    if (amount <= 0)
+        return 0;
 
-		count++;
-	}
+    for (int i = 0; i < 5; i++)
+    {
+        while (amount >= coins[i])
+        {
+            amount -= coins[i];
+            coin_count++;
+        }
+    }
 
-	return (count);
+    return coin_count;
 }
 
 /**
- * main - Takes in exactly one argument for minimum coin count
+ * main - Entry point of the program
  * @argc: Number of command line arguments
- * @argv: Array name
- * Return: 0 if exactly 1 argument is passed into this program, 1 otherwise
+ * @argv: Array of command line argument strings
+ * Return: 0 if successful, 1 if an error occurred
  */
 int main(int argc, char *argv[])
 {
-	int i, coin;
+    if (argc != 2)
+    {
+        printf("Error\n");
+        return 1;
+    }
 
-	coin = 0;
+    int amount = atoi(argv[1]);
 
-	if (argc != 2)
-	{
-		printf("Error\n");
-		return (1);
-	}
+    if (amount < 0)
+        printf("0\n");
+    else
+    {
+        int coin_count = coinConverter(amount);
+        printf("%d\n", coin_count);
+    }
 
-	i = atoi(argv[1]);
-
-	if (i < 0)
-		printf("0\n");
-	else
-	{
-		coin = coinConverter(i);
-
-		printf("%d\n", coin);
-	}
-
-	return (0);
+    return 0;
 }
