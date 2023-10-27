@@ -1,57 +1,38 @@
-#include "holberton.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
-#include <stdbool.h>
 
 /**
- * coinConverter - Helper function that calculates the minimum number of coins
- * @amount: The amount for which we want to find the minimum coins
- * Return: The number of coins needed for the given amount
+ * main - function to print out the change that needs to given
+ * @argc: number of arguments to be passed
+ * @argv: number of variables to calculate
+ * Return: always 0 for sucess
  */
-int coinConverter(int amount)
+
+int main(int argc, char **argv)
 {
-    int coins[] = {25, 10, 5, 2, 1};
-    int coin_count = 0;
+	int total, change;
 
-    if (amount <= 0)
-        return 0;
+	if (argc < 2)
+	{
+		printf("Error\n");
+		return (1);
+	}
 
-    for (int i = 0; i < 5; i++)
-    {
-        while (amount >= coins[i])
-        {
-            amount -= coins[i];
-            coin_count++;
-        }
-    }
+	change = atoi(argv[1]);
 
-    return coin_count;
-}
-
-/**
- * main - Entry point of the program
- * @argc: Number of command line arguments
- * @argv: Array of command line argument strings
- * Return: 0 if successful, 1 if an error occurred
- */
-int main(int argc, char *argv[])
-{
-    if (argc != 2)
-    {
-        printf("Error\n");
-        return 1;
-    }
-
-    int amount = atoi(argv[1]);
-
-    if (amount < 0)
-        printf("0\n");
-    else
-    {
-        int coin_count = coinConverter(amount);
-        printf("%d\n", coin_count);
-    }
-
-    return 0;
+	for (total = 0; change > 0; total++)
+	{
+		if (change - 25 >= 0)
+			change = change - 25;
+		else if (change - 10 >= 0)
+			change = change - 10;
+		else if (change - 5 >= 0)
+			change = change - 5;
+		else if (change - 2 >= 0)
+			change = change - 2;
+		else if (change - 1 >= 0)
+			change = change - 1;
+	}
+	printf("%d\n", total);
+	return (0);
 }
