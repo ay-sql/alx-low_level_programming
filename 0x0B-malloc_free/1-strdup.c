@@ -1,25 +1,43 @@
 #include "holberton.h"
-#include <stdio.h>
-#include <stdlib.h>
+/**
+  *_strdup - contains a copy of the string given as a parament
+  *@str: char
+  *Return:char
+  */
 
 char *_strdup(char *str)
 {
-  int i = 0, j, k = 0;
-  char *newStr = NULL;
 
-  while (str[k] != '\0')
-    {
-      i++;
-      k++;
-    }
+char *ar;
+unsigned int i;
+unsigned int length = 0;
 
-  newStr = malloc(sizeof(char) * (i + 1));
+if (str == NULL)
+	return (NULL);
 
-  if (str == NULL)
-    return (NULL);
+for (length = 0; str[length] != '\0'; length++)
+;
+length++;
 
-  for (j = 0; j <= i; j++)
-    newStr[j] = str[j];
+if (length < 1)
+	return (NULL);
 
-  return (newStr);
+ar = malloc(length *sizeof(char));
+
+if (ar == NULL)
+{
+	free(ar);
+	return (NULL);
 }
+
+for (i = 0; i < length; i++)
+	ar[i] = str[i];
+
+ar[i] = '\0';
+
+return (ar);
+
+
+
+}
+

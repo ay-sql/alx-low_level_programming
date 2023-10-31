@@ -1,33 +1,48 @@
 #include "holberton.h"
-#include <stdio.h>
-#include <stdlib.h>
+
+/**
+  *str_concat-cat 2 strings
+  *@s1: char
+  *@s2: char
+  *Return: char
+  */
+
 
 char *str_concat(char *s1, char *s2)
 {
-  int i, j, k;
-  char *newStr = NULL;
+unsigned int length1;
+unsigned int length2;
+unsigned int i, j, k;
+char *ar;
 
-  if (s1 == NULL)
-    s1 = "";
-  if (s2 == NULL)
-    s2 = "";
+if (s1 == NULL)
+	s1 = "";
+if (s2 == NULL)
+	s2 = "";
 
-  for (i = 0; s1[i] != '\0'; i++)
-    ;
+for (length1 = 0; s1[length1] != '\0'; length1++)
+;
+for (length2 = 0; s2[length2] != '\0'; length2++)
+;
+length2++;
 
-  for (j = 0; s2[j] != '\0'; j++)
-    ;
+ar = malloc((length1 * sizeof(char)) + (length2 *sizeof(char)));
 
-  newStr = (char*)malloc((i + j) * sizeof(char));
+if (ar == NULL)
+{
+	free(ar);
+	return (NULL);
+}
 
-  if (newStr == NULL)
-    return (NULL);
+for (i = 0; s1[i] != '\0'; i++)
+	ar[i] = s1[i];
 
-  for (k = 0; s1[k] != '\0'; k++)
-    newStr[k] = s1[k];
+for (j = i, k = 0; s2[k] != '\0'; j++, k++)
+	ar[j] = s2[k];
 
-  for (k = 0; s2[k] != '\0'; k++)
-    newStr[k + i] = s2[k];
 
-  return (newStr);
+ar[j] = '\0';
+
+return (ar);
+
 }
