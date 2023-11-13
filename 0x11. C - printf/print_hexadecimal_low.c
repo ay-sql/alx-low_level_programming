@@ -1,17 +1,17 @@
 #include "main.h"
 
 /**
- * print_octal - Print a unsigned octal
+ * print_hexadecimal_low - Print a number in hexadecimal format
  * @list: Number to print
  *
  * Return: Length of the number
  **/
-int print_octal(va_list list)
+int print_hexadecimal_low(va_list list)
 {
 	char *p_buff;
 	int size;
 
-	p_buff = itoa(va_arg(list, unsigned int), 8);
+	p_buff = itoa(va_arg(list, unsigned int), 16);
 
 	size = print((p_buff != NULL) ? p_buff : "NULL");
 
