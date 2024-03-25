@@ -1,17 +1,32 @@
 # 0x18. C - Dynamic libraries
 
-In this project, i learnt about what dynamic library is, how it works, how to create one and how it works. It also helped me understand the differences between static and shared libraries.
+## Description
+What you should learn from this project:
 
-## Function Prototypes :floppy_disk:
-The following files are scripts written for the projects written in C:
+* What is a dynamic library, how does it work, how to create one, and how to use it
+* What is the environment variable $LD_LIBRARY_PATH and how to use it
+* What are the differences between static and shared libraries
+* Basic usage nm, ldd, ldconfig
+
+---
+
+### [0. A library is not a luxury but one of the necessities of life](./libholberton.so)
+* Create the dynamic library libholberton.so containing all the functions listed below:
 
 
-## Table of contents
-Files | Description
------ | -----------
-[libdynamic.so](./libdynamic.so) | C dynamic library containing the function definitions
-[main.h](./main.h) | Header files containing the function prototypes
-[1-create_dynamic_lib.sh](./1-create_dynamic_lib.sh) | Bash script that creates a dynamic library called liball.so from all the .c files that are in the current directory
-[100-operations.so](./100-operations.so) | C dynamic library that contains C functions that can be called from Python
-[random.so](./random.so) | C dynamic library to inject in a giga million program
-[101-make_me_win.sh](./101-make_me_win.sh) | Bash script to inject the libmask.so library, using LD_PRELOAD, in the giga million program
+### [1. Without libraries what have we? We have no past and no future](./1-create_dynamic_lib.sh)
+* Create a script that creates a dynamic library called liball.so from all the .c files that are in the current directory.
+
+
+### [2. Either write something worth reading or do something worth writing](./100-operations.so)
+* Write a blog post describing the differences between static and dynamic libraries. It should cover:
+
+
+### [3. Let's call C functions from Python](./101-make_me_win.sh)
+* I know, you’re missing C when coding in Python. So let’s fix that!
+
+
+---
+
+## Author
+* **Diva Lei** - [lei-diva](https://github.com/lei-diva)

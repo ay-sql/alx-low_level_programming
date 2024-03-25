@@ -1,28 +1,27 @@
-int add(int a, int b)
+#include "head.h"
+
+int add(int x, int y)
 {
-	return (a + b);
+	return (x + y);
 }
 
-int sub(int a, int b)
+int sub(int x, int y)
 {
-	return (a - b);
+	return (x - y);
 }
 
-int mul(int a, int b)
+int mul(int x, int y)
 {
-	return(a * b);
+	return (x * y);
 }
 
-int div(int a, int b)
+int div(int x, int y)
 {
-	if (b != 0)
-		return (a / b);
-	return (0);
+	return (x / y);
 }
 
-int mod(int a, int b)
+int mod(int x, int y)
 {
-	if (b != 0)
-		return (a % b);
-	return (0);
+	return (x % y);
 }
+
